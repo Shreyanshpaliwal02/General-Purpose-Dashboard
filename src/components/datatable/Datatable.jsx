@@ -11,7 +11,9 @@ const Datatable = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/user").then((res) => setData(res.data));
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}/user`)
+      .then((res) => setData(res.data));
   }, []);
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
